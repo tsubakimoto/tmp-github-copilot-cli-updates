@@ -31,13 +31,13 @@ jobs:
         run: copilot --version > copilot-version.txt
 
       - name: Display Copilot CLI version
-        run: cat copilot-version.txt
+        run: cat copilot-version.txt >> $GITHUB_STEP_SUMMARY
 
       - name: Write Copilot CLI help to file
         run: copilot --help > copilot-help.txt
 
       - name: Display Copilot CLI help
-        run: cat copilot-help.txt
+        run: cat copilot-help.txt >> $GITHUB_STEP_SUMMARY
 
       - name: Commit Copilot CLI version and create pull request
         env:
