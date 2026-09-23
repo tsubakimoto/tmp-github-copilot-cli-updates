@@ -24,17 +24,23 @@ jobs:
       - name: Update Copilot CLI
         run: copilot update
 
-      - name: Verify Copilot CLI installation
+      - name: Write Copilot CLI version to file
         run: copilot --version > copilot-version.txt
 
       - name: Display Copilot CLI version
         run: cat copilot-version.txt
 
+      - name: Write Copilot CLI help to file
+        run: copilot --help > copilot-help.txt
+
+      - name: Display Copilot CLI help
+        run: cat copilot-help.txt
+
       - name: Commit Copilot CLI version
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add copilot-version.txt
+          git add copilot-version.txt copilot-help.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
